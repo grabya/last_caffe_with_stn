@@ -2,5 +2,5 @@
 
 based on:
 
-Caffe Docker forked from christopher5106/last_caffe_with_stn
-http://www.openu.ac.il/home/hassner/projects/cnn_agegender/
+1. Caffe Docker forked from christopher5106/last_caffe_with_stn
+2. http://www.openu.ac.il/home/hassner/projects/cnn_agegender/
