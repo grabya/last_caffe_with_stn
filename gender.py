@@ -26,7 +26,7 @@ age_net_pretrained='./age_net.caffemodel'
 age_net_model_file='./deploy_age.prototxt'
 age_net = caffe.Classifier(age_net_model_file, age_net_pretrained,
                        mean=mean,
-                       channel_swap=(2,1,0),
+              host='0.0.0.0'         channel_swap=(2,1,0),
                        raw_scale=255,
                        image_dims=(256, 256))
 
@@ -57,4 +57,4 @@ def analyze(url):
     return jsonify({'age': age, 'gender': gender})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
