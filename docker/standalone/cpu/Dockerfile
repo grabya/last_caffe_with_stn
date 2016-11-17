@@ -65,4 +65,6 @@ RUN rm /opt/caffe/python/caffe/io.py
 RUN wget http://www.openu.ac.il/home/hassner/projects/cnn_agegender/io.py -P /opt/caffe/python/caffe/
 RUN pip install flask
 
+EXPOSE 5000
 
+CMD ["ipython", "gender.py", "--matplotlib", "inline", "--pylab"]
