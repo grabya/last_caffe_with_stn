@@ -26,7 +26,7 @@ age_net_pretrained='./age_net.caffemodel'
 age_net_model_file='./deploy_age.prototxt'
 age_net = caffe.Classifier(age_net_model_file, age_net_pretrained,
                        mean=mean,
-              host='0.0.0.0'         channel_swap=(2,1,0),
+                       channel_swap=(2,1,0),
                        raw_scale=255,
                        image_dims=(256, 256))
 
