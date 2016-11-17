@@ -37,6 +37,9 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
 RUN make -j"$(nproc)"
 RUN sudo make install
 
+RUN apt update && apt-get install -y python-matplotlib unzip
+RUN 
+
 ENV CAFFE_ROOT=/opt/caffe
 WORKDIR $CAFFE_ROOT
 
@@ -54,4 +57,12 @@ ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
 ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
+# Added by Reuven
 WORKDIR /workspace
+RUN wget http://www.openu.ac.il/home/hassner/projects/cnn_agegender/cnn_age_gender_models_and_data.0.0.2.zip
+RUN unzip -j cnn_age_gender_models_and_data.0.0.2.zip
+RUN rm /opt/caffe/python/caffe/io.py
+RUN wget http://www.openu.ac.il/home/hassner/projects/cnn_agegender/io.py -P /opt/caffe/python/caffe/
+RUN pip install flask
+
+
