@@ -38,6 +38,7 @@ RUN make -j"$(nproc)"
 RUN sudo make install
 
 RUN apt update && apt-get install -y python-matplotlib unzip
+RUN ls
 
 ENV CAFFE_ROOT=/opt/caffe
 WORKDIR $CAFFE_ROOT
