@@ -56,7 +56,7 @@ def analyze(url):
     gender_max_score = prediction[0].argmax()
     gender = gender_list[gender_max_score]
     print 'predicted gender:', gender
-    return jsonify({'age': age, 'age_score' : age_max_score, gender': gender, 'gender_score' : gender_max_score})
+    return jsonify({'age': age, 'age_score' : age_max_score, 'gender' : gender, 'gender_score' : gender_max_score})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
