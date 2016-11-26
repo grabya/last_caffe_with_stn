@@ -50,12 +50,14 @@ def analyze(url):
     input_image = caffe.io.load_image('/opt/tmp/'+url)
     input_image = caffe.io.resize_image(input_image, (256, 256))
     prediction = age_net.predict([input_image]) 
-    age_max_score = prediction[0].argmax()
-    age = age_list[age_max_score]
+    age_max_index = prediction[0].argmax()
+    age_max_score = prediction[0][age_max_index]
+    age = age_list[age_max_index]
     print 'predicted age:', age
     prediction = gender_net.predict([input_image]) 
-    gender_max_score = prediction[0].argmax()
-    gender = gender_list[gender_max_score]
+    gender_max_index = prediction[0].argmax()
+    gender_max_score = prediction[0][gender_max_index]
+    gender = gender_list[gender_max_index]
     print 'predicted gender:', gender
     return jsonify({'age': age, 'age_score' : age_max_score, 'gender' : gender, 'gender_score' : gender_max_score})
 
