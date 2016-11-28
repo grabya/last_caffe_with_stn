@@ -47,7 +47,7 @@ def index():
 
 @app.route('/analyze/<string:url>', methods=['GET'])
 def analyze(url):
-    input_image = caffe.io.load_image('/opt/tmp/'+url)
+    input_image = caffe.io.load_image('/opt'+url)
     input_image = caffe.io.resize_image(input_image, (256, 256))
     prediction = age_net.predict([input_image]) 
     age_max_index = prediction[0].argmax()
